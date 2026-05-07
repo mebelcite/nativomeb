@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NATIVO — Мебель на заказ</title>
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109106428', 'ym');
+
+    ym(109106428, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109106428" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --bg: #0c0c0c;
+      --bg-card: #161616;
+      --text: #f0ece4;
+      --text-muted: #8a8578;
+      --accent: #c9a96e;
+      --vk-blue: #0077ff;
+      --radius: 16px;
+    }
+
+    html { font-size:16px; -webkit-text-size-adjust:100%; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+    }
+
+    .hero-badge {
+      padding: 48px 24px 20px;
+      opacity: 0;
+      animation: fadeDown .8s ease .2s forwards;
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeIn 1s ease .3s forwards;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 24px 40px;
+      margin-top: -60px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp .7s ease .5s forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp .8s ease .6s forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .8s ease .7s forwards;
+    }
+
+    /* ===== CTA BUTTON ===== */
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 24px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--vk-blue);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .15s ease;
+    }
+
+    .cta-btn.animated {
+      opacity: 0;
+      animation: fadeUp .8s ease .85s forwards;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.12), transparent 50%);
+      pointer-events: none;
+    }
+
+    .cta-btn:active { transform: scale(.97); }
+
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ===== FEATURES ===== */
+    .features {
+      padding: 0 24px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp .8s ease 1s forwards;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,169,110,.08);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 10px;
+      background: rgba(201,169,110,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+    }
+
+    .feature-text h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .feature-text p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    /* ===== TRUST ===== */
+    .trust-bar {
+      padding: 0 24px 40px;
+      display: flex;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp .8s ease 1.1s forwards;
+    }
+
+    .trust-item { flex:1; text-align:center; }
+
+    .trust-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .trust-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta {
+      padding: 32px 24px 32px;
+      border-top: 1px solid rgba(201,169,110,.08);
+      text-align: center;
+    }
+
+    .bottom-cta p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* ===== FALLBACK ===== */
+    .fallback { display:none; padding:20px 24px; text-align:center; }
+    .fallback.visible { display:block; }
+    .fallback p { font-size:13px; color:var(--text-muted); margin-bottom:8px; }
+    .fallback a { font-size:14px; color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 20px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(201,169,110,.06);
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(138,133,120,.5);
+      letter-spacing: .05em;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-12px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="logo-text">Nativo</span>
+    </div>
+
+    <div class="hero-photo">
+      <img src="hero.jpg" alt="NATIVO — кухня на заказ">
+    </div>
+
+    <div class="hero-content">
+      <span class="hero-label">Архангельск и область</span>
+      <h1>Мебель<br>на <em>заказ</em></h1>
+      <p class="hero-sub">Кухни, шкафы, гардеробные по индивидуальным размерам. Честная цена от производителя.</p>
+      <button class="cta-btn animated" id="vkBtn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.77 19.15c-7.47 0-11.73-5.12-11.9-13.63h3.74c.12 6.24 2.87 8.88 5.05 9.43V5.52h3.52v5.38c2.15-.23 4.41-2.67 5.17-5.38h3.52c-.58 3.33-3.01 5.77-4.74 6.78 1.73.79 4.48 2.88 5.54 6.85h-3.89c-.83-2.6-2.9-4.61-5.6-4.89v4.89h-.41z"/></svg>
+        Смотреть каталог
+      </button>
+    </div>
+  </section>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="feature-text">
+        <h3>Гарантия до 60 месяцев</h3>
+        <p>Расширенная гарантия + сервисное обслуживание на весь срок эксплуатации</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <div class="feature-text">
+        <h3>Замер и 3D-проект бесплатно</h3>
+        <p>Дизайнер выезжает на замер, делает визуализацию и расчёт</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
+      </div>
+      <div class="feature-text">
+        <h3>Собственное производство</h3>
+        <p>1 300 м² площадь цеха. Без посредников — от фабрики напрямую</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="trust-item">
+      <div class="trust-num">11+</div>
+      <div class="trust-label">лет опыта</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">200+</div>
+      <div class="trust-label">отзывов</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">1300</div>
+      <div class="trust-label">м² цех</div>
+    </div>
+  </div>
+
+  <div class="bottom-cta">
+    <p>Смотрите готовые проекты, цены и отзывы в&nbsp;нашем каталоге во&nbsp;ВКонтакте</p>
+    <button class="cta-btn" id="vkBtn2">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.77 19.15c-7.47 0-11.73-5.12-11.9-13.63h3.74c.12 6.24 2.87 8.88 5.05 9.43V5.52h3.52v5.38c2.15-.23 4.41-2.67 5.17-5.38h3.52c-.58 3.33-3.01 5.77-4.74 6.78 1.73.79 4.48 2.88 5.54 6.85h-3.89c-.83-2.6-2.9-4.61-5.6-4.89v4.89h-.41z"/></svg>
+      Открыть каталог
+    </button>
+  </div>
+
+  <div class="fallback" id="fallback">
+    <p>Не открылось автоматически?</p>
+    <a id="manualLink" href="#">Нажмите здесь</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-copy">&copy; 2026 NATIVO МЕБЕЛЬ</div>
+  </footer>
+
+</div>
+
+
+
+<script>
+  function getYclid() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get('yclid') || '';
+  }
+
+  function buildLinks() {
+    var yclid = getYclid();
+    var yclidStart = yclid ? '?ref=' + encodeURIComponent(yclid) : '';
+
+    return {
+      // vk.me — универсальная ссылка, открывает диалог и в приложении, и в браузере
+      url: "https://vk.me/nativomebel" + yclidStart
+    };
+  }
+
+  var fallback = document.getElementById("fallback");
+  var manualLink = document.getElementById("manualLink");
+
+  function openVK() {
+    var links = buildLinks();
+
+    manualLink.href = links.url;
+
+    if (typeof ym !== "undefined") {
+      ym(109106428, 'reachGoal', 'vk_click');
+    }
+
+    window.location.href = links.url;
+  }
+
+  document.getElementById("vkBtn").addEventListener("click", openVK);
+  document.getElementById("vkBtn2").addEventListener("click", openVK);
+</script>
+
+
+
+</body>
+</html>
