@@ -154,10 +154,27 @@
     return match ? decodeURIComponent(match[1]) : '';
   }
 
-  // Строим ссылку на ВК с ref = _ym_uid
+  // Читаем utm_medium из URL
+  function getUtmMedium() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get('utm_medium') || '';
+  }
+
+  // Строим ссылку на ВК с ref = _ym_uid и ref_source = utm_medium
   function buildVkUrl(ymUid) {
     var base = 'https://vk.me/nativomebel';
-    return ymUid ? base + '?ref=' + encodeURIComponent(ymUid) : base;
+    var params = [];
+
+    if (ymUid) {
+      params.push('ref=' + encodeURIComponent(ymUid));
+    }
+
+    var utmMedium = getUtmMedium();
+    if (utmMedium) {
+      params.push('ref_source=' + encodeURIComponent(utmMedium));
+    }
+
+    return params.length ? base + '?' + params.join('&') : base;
   }
 
   // Показываем fallback-ссылку
